@@ -24,3 +24,27 @@ var floodFill = function(image, sr, sc, color) {
     fill(sr, sc);
     return image;
 };
+
+/**
+ * @param {number[][]} image
+ * @param {number} sr
+ * @param {number} sc
+ * @param {number} color
+ * @return {number[][]}
+ */
+ var floodFill = function(image, sr, sc, color) {
+    const m = image.length,
+          n = image[0].length,
+          oldColor = image[sr][sc];
+    if (oldColor == color) return image;
+    const queue = [[sr,sc]];
+    while(queue.length > 0) {
+        const [x, y] = queue.shift();
+        image[x][y] = color;
+        if (x + 1 < m && image[x + 1][y] == oldColor) queue.push([x + 1, y]);
+        if (x - 1 >= 0 && image[x - 1][y] == oldColor) queue.push([x - 1, y]);
+        if (y + 1 < n && image[x][y + 1] == oldColor) queue.push([x, y + 1]);
+        if (y - 1 >= 0 && image[x][y - 1] == oldColor) queue.push([x, y - 1]);    
+    }
+    return image;
+};
