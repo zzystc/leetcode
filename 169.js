@@ -39,3 +39,28 @@ var majorityElement = function(nums) {
     }
     return majority;
 };
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+ var majorityElement = function(nums) {
+    const getCount = (num, lo, hi) => {
+        let count = 0;
+        for (let i = lo; i <= hi; i++) {
+            if (nums[i] === num) count++;
+        }
+        return count;
+    }
+    const getMode = (lo, hi) => {
+        if (lo === hi) return nums[lo];
+        let mid = (lo + hi) >> 1;
+        let left = getMode(lo, mid);
+        let right = getMode(mid + 1, hi);
+        if (left === right) return left;
+        let leftCount = getCount(left, lo, hi);
+        let rightCount = getCount(right, lo, hi);
+        return leftCount > rightCount ? left : right;
+    }
+    return getMode(0, nums.length - 1);
+};
