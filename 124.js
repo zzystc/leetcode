@@ -18,7 +18,7 @@
         }
         const left = dfs(root.left);
         const right = dfs(root.right);
-        const pathSum = root.val + Math.max(0, left, right);
+        const pathSum = root.val + Math.max(left, right);
         maxSum = Math.max(maxSum, left + right + root.val);
         return pathSum < 0 ? 0 : pathSum;
     }
