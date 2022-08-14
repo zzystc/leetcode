@@ -3,19 +3,20 @@
  * @param {number} k
  * @return {number[][]}
  */
-var combine = function(n, k) {
-    const res = [];
-    const helper = (startIndex, path) => {
+ var combine = function(n, k) {
+    const res = [],
+          path = [];
+    const helper = (startIndex) => {
         if (path.length === k) {
-            res.push(Array.from(path));
+            res.push([...path]);
             return;
         }
-        for (let i = startIndex; i <= (n - k + path.length + 1); i++) {
+        for (let i = startIndex; i <= n; i++) {
             path.push(i);
-            helper(i + 1, path);
+            helper(i + 1);
             path.pop();
         }
     }
-    helper(1, []);
+    helper(1);
     return res;
 };
