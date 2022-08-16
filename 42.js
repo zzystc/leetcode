@@ -26,3 +26,25 @@ var trap = function(height) {
     }
     return ans;
 };
+
+/**
+ * @param {number[]} height
+ * @return {number}
+ */
+ var trap = function(height) {
+    let ans = 0;
+    const stack = [];
+    const n = height.length;
+    for (let i = 0; i < n; i++) {
+        while (stack.length && height[i] > height[stack[stack.length - 1]]) {
+            const top = stack.pop();
+            if (!stack.length) {break;}
+            const left = stack[stack.length - 1];
+            const curWidth = i - left - 1;
+            const curHeight = Math.min(height[left], height[i]) - height[top];
+            ans += curHeight * curWidth;
+        }
+        stack.push(i);
+    }
+    return ans;
+};
