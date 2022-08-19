@@ -24,7 +24,7 @@ class Heap {
     heapify() {
         if (this.size() < 2) return;
         for (let i = this.size() >> 1; i >= 0; i--) {
-            this.bubleDown(i);
+            this.bubbleDown(i);
         }
     }
 
