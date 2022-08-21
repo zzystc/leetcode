@@ -10,7 +10,7 @@
  * @param {ListNode} l2
  * @return {ListNode}
  */
-var addTwoNumbers = function(l1, l2) {
+ var addTwoNumbers = function(l1, l2) {
     let head = null,
         tail = null,
         carry = 0;
@@ -19,7 +19,8 @@ var addTwoNumbers = function(l1, l2) {
               n2 = l2 ? l2.val : 0,
               sum = n1 + n2 +carry;
         if (!head) {
-            head = tail = new ListNode(sum % 10);
+            head =  new ListNode(sum % 10);
+            tail = head;
         } else {
             tail.next = new ListNode(sum % 10);
             tail = tail.next;
