@@ -42,6 +42,7 @@ var reverseList = function(head) {
         curr.next = prev;
         prev = curr;
         curr = next;
+        // [curr.next, prev, curr] = [prev, curr, curr.next];
     }
     return prev;
 };
