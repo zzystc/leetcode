@@ -23,3 +23,28 @@ var sortColors = function(nums) {
 function swap(nums, index1, index2) {
     [nums[index1], nums[index2]] = [nums[index2], nums[index1]];
 }
+
+
+
+/**
+ * @param {number[]} nums
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+ var sortColors = function(nums) {
+    let p0 = 0,
+        p2 = nums.length - 1;
+    for (let i = 0; i <= p2; i++) {
+        while (nums[i] === 2 && i < p2) {
+            swap(nums, i, p2);
+            p2--;
+        }
+        if (nums[i] === 0) {
+            swap(nums, i, p0);
+            p0++;
+        }
+    }
+};
+
+function swap(nums, index1, index2) {
+    [nums[index1], nums[index2]] = [nums[index2], nums[index1]];
+}
