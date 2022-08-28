@@ -44,7 +44,7 @@ var binaryTreePaths = function(root) {
  var binaryTreePaths = function(root) {
     const res = [];
     if (root === null) {return res};
-    const nodes  = [root];
+    const nodes = [root];
     const paths = [`${root.val}`];
     while (nodes.length !== 0) {
         const node = nodes.shift();
