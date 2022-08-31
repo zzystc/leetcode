@@ -20,3 +20,45 @@ var longestWord = function(words) {
     }
     return '';
 };
+
+
+/**
+ * @param {string[]} words
+ * @return {string}
+ */
+ var longestWord = function(words) {
+    const trie = new Trie();
+    words.forEach(word => {
+        trie.insert(word);
+    })
+    let res = '';
+    const _helper = (nodes, path) => {
+        if (path.length > res.length || (res.length === path.length && res > path)) {
+            res = path;
+        }
+        for (const [key, value] of Object.entries(nodes)) {
+            if (value.isEnd === true) {
+                path += key;
+                _helper(value, path);
+                path = path.slice(0, -1);
+            }
+        }
+    }
+    _helper(trie.children, '');
+    return res;
+};
+
+var Trie = function() {
+    this.children = {};
+}
+
+Trie.prototype.insert = function(word) {
+    let nodes = this.children;
+    for (const ch of word) {
+        if (!nodes[ch]) {
+            nodes[ch] = {};
+        }
+        nodes = nodes[ch];
+    }
+    nodes.isEnd = true;
+}
