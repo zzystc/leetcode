@@ -1,14 +1,19 @@
-var findSubstring = function(s, words) {
-    const res = [];
-    const m = words.length, n = words[0].length, ls = s.length;
+/**
+ * @param {string} s
+ * @param {string[]} words
+ * @return {number[]}
+ */
+ var findSubstring = function(s, words) {
+    const res =[],
+          m = words.length,
+          n = words[0].length,
+          ls = s.length;
     for (let i = 0; i < n; i++) {
-        if (i + m * n > ls) {
-            break;
-        }
+        if (i + m * n > ls) {break};
         const differ = new Map();
         for (let j = 0; j < m; j++) {
             const word = s.substring(i + j * n, i + (j + 1) * n);
-            differ.set(word, (differ.get(word) || 0) + 1);
+            differ.set(word, (differ.get(word) || 0) + 1); 
         }
         for (const word of words) {
             differ.set(word, (differ.get(word) || 0) - 1);
