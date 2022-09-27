@@ -4,7 +4,7 @@
  * @return {number[]}
  */
 var countSubgraphsForEachDiameter = function(n, edges) {
-    let dist = new Array(n).fill(0).map(() => new Array(n).fill(16)); //存储两点之间的距离
+    let dist = new Array(n).fill(0).map(() => new Array(n).fill(Infinity)); //存储两点之间的距离
         for(let i = 0; i < n; i ++){
             dist[i][i] = 0;
         }       
@@ -47,3 +47,6 @@ var countSubgraphsForEachDiameter = function(n, edges) {
         }
         return ans;
 };
+
+let n = 4, edges = [[1,2],[2,3],[2,4]];
+countSubgraphsForEachDiameter(n, edges);
