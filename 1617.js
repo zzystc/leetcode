@@ -48,5 +48,5 @@ var countSubgraphsForEachDiameter = function(n, edges) {
         return ans;
 };
 
-let n = 4, edges = [[1,2],[2,3],[2,4]];
-countSubgraphsForEachDiameter(n, edges);
+// let n = 4, edges = [[1,2],[2,3],[2,4]];
+// countSubgraphsForEachDiameter(n, edges);
